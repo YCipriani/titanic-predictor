@@ -70,7 +70,6 @@ titanic_data=pd.concat([titanic_data, sex, embarked, pcl], axis=1)
 
 #now drop the old columns which you transformed + unessessary columns
 titanic_data.drop(['sex', 'pclass', 'embarked', 'name', 'ticket', 'cabin', 'boat', 'body', 'home.dest'], axis=1, inplace=True)
-print(titanic_data)
 
 #Step 4: Train & Test dataset
 #x will be all of the columns except for the column we are trying to predict
@@ -84,10 +83,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 #using Logistic Regression instance for the predictions
 logmodel = LogisticRegression(max_iter=2000)
 logmodel.fit(X_train, y_train)
-preditions = logmodel.predict(X_test)
+predictions = logmodel.predict(X_test)
 
 #Step 5: Accuracy Check
 #to evaluate how the model has been performing
-print(classification_report(y_test, preditions))
-print(confusion_matrix(y_test, preditions))
-print('Accuracy score for the predictions: ' + str(accuracy_score(y_test, preditions)))
+print(classification_report(y_test, predictions))
+print(confusion_matrix(y_test, predictions))
+print('Accuracy score is: ' + str(accuracy_score(y_test, predictions)*100) + '%')
